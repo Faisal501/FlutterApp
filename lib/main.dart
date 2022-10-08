@@ -31,25 +31,49 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Faisi App"),
       ),
-      body: Center(
-        child: Container(
-          // small widgets which can hold only child we will use child else
-          padding: const EdgeInsets.all(10), // this will apply on child
-          height: 100,
-          width: 100,
-          decoration: const BoxDecoration(
+      body: Container(
+        width: 500,
+        color: Colors.black,
+        child: Column(
+          // try it with coloum
+          // child: Row(      // try it with row
+          // can have multiple childrens
+          /**
+           * For (row) mainaxisalignment is for horizontel axis and crossaxisalignment
+           * is for vertial axis. And for coloum its opposite
+           */
+
+          //mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(10),
+              height: 100,
+              width: 100,
               color: Colors.blueAccent,
-              shape: BoxShape.circle,
-              gradient:
-                  LinearGradient(colors: [Colors.blue, Colors.deepPurple]),
-              boxShadow: [BoxShadow(blurRadius: 10, color: Colors.black)]),
-          alignment: Alignment.center, // this will apply to child
-          child: const Text(
-            "Rana Faisal",
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
+              alignment: Alignment.center,
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              height: 100,
+              width: 100,
+              color: Colors.lightBlue,
+              alignment: Alignment.center,
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              height: 100,
+              width: 100,
+              color: Colors.lightBlueAccent,
+              alignment: Alignment.center,
+            ),
+          ],
         ),
       ),
     );

@@ -26,56 +26,65 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-// scaffold is a structure which contains some basic widgets like appbar etc.
+//? scaffold is a structure which contains some basic widgets like appbar etc.
     return Scaffold(
       appBar: AppBar(
         title: const Text("Faisi App"),
       ),
-      body: Container(
-        width: 500,
-        color: Colors.black,
-        child: Column(
-          // try it with coloum
-          // child: Row(      // try it with row
-          // can have multiple childrens
-          /**
-           * For (row) mainaxisalignment is for horizontel axis and crossaxisalignment
-           * is for vertial axis. And for coloum its opposite
-           */
-
-          //mainAxisAlignment: MainAxisAlignment.center,
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //mainAxisAlignment: MainAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-
+      body: Center(
+        child: Container(
+          width: 100,
+          height: 100,
+          color: Colors.black,
+        ),
+      ),
+      drawer: Drawer(
+        //*drawer takes a widget (it is side bar of app)
+        //key: , //? key is used to redrawing of widget mentioned
+        child: ListView(
+          padding: const EdgeInsets.all(0),
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: 100,
-              width: 100,
-              color: Colors.blueAccent,
-              alignment: Alignment.center,
+            // DrawerHeader(
+            //   decoration: BoxDecoration(color: Colors.blueAccent),
+            //   child: Text("Menu"),
+            // ),
+            const UserAccountsDrawerHeader(
+              accountName: Text("Faisi"),
+              accountEmail: Text("Faisi@gmail.com"),
+              //  currentAccountPicture: Image.asset("assets/images/faisi.jpg"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/images/faisi.jpg"),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: 100,
-              width: 100,
-              color: Colors.lightBlue,
-              alignment: Alignment.center,
+
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text("Faisal Mehmood"),
+              subtitle: const Text("Software Developer"),
+              trailing: const Icon(Icons.edit),
+              onTap: () {}, //? for performing action
             ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: 100,
-              width: 100,
-              color: Colors.lightBlueAccent,
-              alignment: Alignment.center,
+            const ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Mohsin Mehmood"),
+              subtitle: Text("Pak Army"),
+              trailing: Icon(Icons.edit),
             ),
+            const ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Haris Mehmood"),
+              subtitle: Text("Student"),
+              trailing: Icon(Icons.edit),
+            )
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed:
+            () {}, // this empty implementation of function (){} means void function
+        child: const Icon(Icons.edit),
+      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // another property
     );
   }
 }

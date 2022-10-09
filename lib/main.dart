@@ -51,9 +51,9 @@ class HomePage extends StatelessWidget {
             const UserAccountsDrawerHeader(
               accountName: Text("Faisi"),
               accountEmail: Text("Faisi@gmail.com"),
-              //  currentAccountPicture: Image.asset("assets/images/faisi.jpg"),
+              //  currentAccountPicture: Image.asset("images/faisi1.jpg"),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/faisi.jpg"),
+                backgroundImage: AssetImage("images/faisi.png"),
               ),
             ),
 
@@ -81,10 +81,10 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed:
-            () {}, // this empty implementation of function (){} means void function
+            () {}, //? this empty implementation of function (){} means void function
         child: const Icon(Icons.edit),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // another property
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, //? another property
     );
   }
 }

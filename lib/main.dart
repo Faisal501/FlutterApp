@@ -1,7 +1,8 @@
 //import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_1/pages/home_page.dart';
+import 'package:flutter_app_1/pages/login_page.dart';
 
-import 'pages/home_page.dart';
 // import 'package:flutter/cupertino.dart'; this package is used for ios app
 
 void main() {
@@ -23,10 +24,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const HomePage(),
+      debugShowCheckedModeBanner: false,
+      home: const LoginPage(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
+      routes: {
+        LoginPage.routeName: (context) => const LoginPage(),
+        HomePage.routeName: (context) => const HomePage(),
+      },
     );
   }
 }

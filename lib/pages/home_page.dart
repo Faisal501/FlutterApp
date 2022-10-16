@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class HomePage extends StatefulWidget {
+  static const String routeName = "/home";
+
   const HomePage({super.key});
 
   @override
@@ -44,8 +46,18 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[400],
       appBar: AppBar(
         title: const Text("Faisi App"),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.exit_to_app)),
+        ],
       ),
       body: res_data != null
+          // ? GridView.builder( //? gridview and Listview try it to uncheck the listview
+          //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          //         crossAxisCount: 2),
           ? ListView.builder(
               itemBuilder: (context, index) {
                 return ListTile(

@@ -21,21 +21,73 @@ void main() {
 }
 
 // stateless widget is that which dont change its state like text on scrreen
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var myName = "Change Your Name";
+  final TextEditingController _nameController = TextEditingController();
+
+  @override
+  void initState() {
+    //? to initialize the state
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    //* to distroy the state
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
 //? scaffold is a structure which contains some basic widgets like appbar etc.
     return Scaffold(
+      backgroundColor: Colors.grey[400],
       appBar: AppBar(
         title: const Text("Faisi App"),
       ),
       body: Center(
-        child: Container(
-          width: 100,
-          height: 100,
-          color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  Image.asset(
+                    //* if anything overflow then wrap it in SingleChildScrollView
+                    "images/faisi.png",
+                    // height: 200,
+                    // width: 200,
+                    // fit: BoxFit.cover,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    myName,
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextField(
+                      controller: _nameController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Enter Your Name",
+                        labelText: "Name",
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
       ),
       drawer: Drawer(
@@ -80,9 +132,12 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed:
-            () {}, //? this empty implementation of function (){} means void function
-        child: const Icon(Icons.edit),
+        onPressed: () {
+          //? this empty implementation of function (){} means void function
+          myName = _nameController.text;
+          setState(() {}); //* this is to reflect the change on UI
+        },
+        child: const Icon(Icons.send),
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, //? another property
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_1/pages/home_page.dart';
+import 'package:flutter_app_1/pages/home_page_future_builder.dart';
 import 'package:flutter_app_1/utils/constants.dart';
 
 class LoginPage extends StatefulWidget {
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                                 //     builder: (context) =>
                                 //         const HomePage()));
                                 Navigator.pushReplacementNamed(
-                                    context, HomePage.routeName);
+                                    context, HomePageFB.routeName);
                               },
                               child: const Text("Sign In"),
                             ),

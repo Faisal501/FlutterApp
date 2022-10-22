@@ -1,6 +1,6 @@
 //import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_1/pages/home_page.dart';
+import 'package:flutter_app_1/pages/home_page_future_builder.dart';
 import 'package:flutter_app_1/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,14 +32,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Constants.prefs.getBool("LoggedIn") == true
-          ? const HomePage()
+          //      ? const HomePage() //* Commented for learning future builder
+          ? HomePageFB()
           : const LoginPage(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
       routes: {
         LoginPage.routeName: (context) => const LoginPage(),
-        HomePage.routeName: (context) => const HomePage(),
+        //    HomePage.routeName: (context) => const HomePage(),
+        HomePageFB.routeName: (context) => HomePageFB(),
       },
     );
   }

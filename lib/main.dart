@@ -2,10 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_1/pages/home_page.dart';
 import 'package:flutter_app_1/pages/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'utils/constants.dart';
 
 // import 'package:flutter/cupertino.dart'; this package is used for ios app
 
-void main() {
+Future main() async {
   /**
    *  runApp function takes three types of app
    *  1.  Widgets App
@@ -15,6 +18,9 @@ void main() {
    * 
    *  Note: Everything in a flutter is a widget and widget is a component
    */
+  WidgetsFlutterBinding.ensureInitialized();
+  Constants.prefs = await SharedPreferences.getInstance();
+
   runApp(const MyApp());
 }
 
@@ -25,7 +31,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: Constants.prefs.getBool("LoggedIn") == true
+          ? const HomePage()
+          : const LoginPage(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),

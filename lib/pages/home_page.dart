@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_1/pages/login_page.dart';
+import 'package:flutter_app_1/utils/constants.dart';
 import '../drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -18,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   // final TextEditingController _nameController = TextEditingController();
 
   var url = "http://jsonplaceholder.typicode.com/photos";
+  // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables
   var res_data;
 
   @override
@@ -49,7 +52,8 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Constants.prefs.setBool("LoggedIn", false);
+                Navigator.pushReplacementNamed(context, LoginPage.routeName);
               },
               icon: const Icon(Icons.exit_to_app)),
         ],
